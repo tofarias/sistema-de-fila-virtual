@@ -17,7 +17,7 @@ class SalaTest extends TestCase
         $this->sala = new Sala();
     }
 
-    public function AEntidadeSalaDeveExtenderBaseModel()
+    public function testAEntidadeSalaDeveExtenderBaseModel()
     {
         $this->assertTrue( $this->sala instanceof \Domain\SGFV\Entities\BaseModel );
     }
