@@ -1,6 +1,4 @@
-<?php
-
-namespace App;
+<?php namespace Domain\SGFV;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
