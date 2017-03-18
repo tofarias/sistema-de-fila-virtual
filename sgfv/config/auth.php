@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => \Domain\SGFV\User::class,
+            'model' => \Domain\SGFV\Entities\User::class,
         ],
 
         // 'users' => [
