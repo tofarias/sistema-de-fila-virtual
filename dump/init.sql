@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `db_sgfv`.`reserva_salas` (
   `dt_fim` timestamp NOT NULL,
   `created_by` int(10) unsigned NOT NULL,
   `created_at` timestamp NOT NULL,
-  `updated_by` int(10) unsigned NOT NULL,
+  `updated_by` int(10) unsigned DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`reserva_id`),
   INDEX `fk_reserva_salas_salas1_idx` (`sala_id` ASC),
@@ -141,3 +141,47 @@ VALUES
 2,
 now()
 );
+
+INSERT INTO `db_sgfv`.`reserva_salas`
+(`reserva_id`,
+`sala_id`,
+`codigo`,
+`observacao`,
+`dt_inicio`,
+`dt_fim`,
+`created_by`,
+`created_at`
+)
+VALUES
+(1,
+1,
+'res01',
+'primeira reserva',
+now(),
+DATE_ADD(NOW(), INTERVAL 1 HOUR),
+1,
+now()
+);
+
+INSERT INTO `db_sgfv`.`reserva_salas`
+(`reserva_id`,
+`sala_id`,
+`codigo`,
+`observacao`,
+`dt_inicio`,
+`dt_fim`,
+`created_by`,
+`created_at`
+)
+VALUES
+(2,
+1,
+'res02',
+'segunda reserva',
+DATE_ADD(NOW(), INTERVAL 2 HOUR),
+DATE_ADD(NOW(), INTERVAL 3 HOUR),
+1,
+now()
+);
+
+select * from reserva_salas;
