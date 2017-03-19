@@ -32,17 +32,17 @@ class SalaTest extends TestCase
 
         //
 
-        $rules = [
+        $validatorRules = [
             'codigo' => 'required'
         ];
 
         //
 
-        $messages = [
+        $validatorMessages = [
             'codigo.required' => 'O campo código é de preenchimento obrigatório'
         ];
 
-        $validator = \Validator::make($request,$rules, $messages);
+        $validator = \Validator::make($request,$validatorRules, $validatorMessages);
         $errors = $validator->errors();
 
         $this->assertTrue( $validator->fails() );
@@ -60,17 +60,17 @@ class SalaTest extends TestCase
 
         //
 
-        $rules = [
+        $validatorRules = [
             'nome' => 'required'
         ];
 
         //
 
-        $messages = [
+        $validatorMessages = [
             'nome.required' => 'O campo nome é de preenchimento obrigatório'
         ];
 
-        $validator = \Validator::make($request,$rules, $messages);
+        $validator = \Validator::make($request,$validatorRules, $validatorMessages);
         $errors = $validator->errors();
 
         $this->assertTrue( $validator->fails() );
@@ -88,21 +88,49 @@ class SalaTest extends TestCase
 
         //
 
-        $rules = [
+        $validatorRules = [
             'localizacao' => 'required'
         ];
 
         //
 
-        $messages = [
+        $validatorMessages = [
             'localizacao.required' => 'O campo localização é de preenchimento obrigatório'
         ];
 
-        $validator = \Validator::make($request,$rules, $messages);
+        $validator = \Validator::make($request,$validatorRules, $validatorMessages);
         $errors = $validator->errors();
 
         $this->assertTrue( $validator->fails() );
         $this->assertTrue( $errors->has('localizacao') );
         $this->assertEquals( 'O campo localização é de preenchimento obrigatório', $errors->first('localizacao') );
+    }
+
+    public function testAoCadastrarSalaSeNaoInformarUsuarioEntaoDeveFalhar()
+    {
+        $request = [
+            'codigo' => 'ABC01',
+            'nome' => 'ABC',
+            'localizacao' => 'predio ABC'
+        ];
+
+        //
+
+        $validatorRules = [
+            'created_by' => 'required'
+        ];
+
+        //
+
+        $validatorMessages = [
+            'created_by.required' => 'Um usuário deve ser definido'
+        ];
+
+        $validator = \Validator::make($request,$validatorRules, $validatorMessages);
+        $errors = $validator->errors();
+
+        $this->assertTrue( $validator->fails() );
+        $this->assertTrue( $errors->has('created_by') );
+        $this->assertEquals( 'Um usuário deve ser definido', $errors->first('created_by') );
     }
 }
