@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS `db_sgfv`.`reserva_salas` (
   INDEX `fk_reserva_salas_salas1_idx` (`sala_id` ASC),
   INDEX `fk_reserva_salas_users1_idx` (`created_by` ASC),
   INDEX `fk_reserva_salas_users2_idx` (`updated_by` ASC),
+  UNIQUE KEY `reserva_salas_codigo_unique` (`codigo`),
   CONSTRAINT `fk_reserva_salas_salas1`
     FOREIGN KEY (`sala_id`)
     REFERENCES `db_sgfv`.`salas` (`sala_id`)
