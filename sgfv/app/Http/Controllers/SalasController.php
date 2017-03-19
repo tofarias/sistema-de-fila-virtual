@@ -72,4 +72,33 @@ class SalasController extends Controller
 
         return redirect()->route('salas.consultar');
     }
+
+    public function viewCadastrar()
+    {
+        return view('salas.cadastrar');
+    }
+
+    public function cadastrar(Request $request)
+    {
+        $sala = new Sala;
+
+        if( $request->has('codigo') )
+        {
+            $sala->codigo = $request->codigo;
+        }
+
+        if( $request->has('nome') )
+        {
+            $sala->nome = $request->nome;
+        }
+
+        if( $request->has('localizacao') )
+        {
+            $sala->localizacao = $request->localizacao;
+        }
+        
+        $sala->saveOrFail();
+
+        return redirect()->route('salas.consultar',['codigo' => $request->codigo]);
+    }
 }

@@ -17,5 +17,8 @@ Route::group(['prefix' => 'salas', 'middleware' => 'auth'], function () {
     Route::get('{sala}/editar', ['as' => 'salas.viewEditar', 'uses' => 'SalasController@viewEditar']);
     Route::post('{sala}/editar', ['as' => 'salas.editar', 'uses' => 'SalasController@editar']);
 
+    Route::get('cadastrar', ['as' => 'salas.viewCadastrar', 'uses' => 'SalasController@viewCadastrar']);
+    Route::post('cadastrar', ['as' => 'salas.cadastrar', 'uses' => 'SalasController@cadastrar']);
+
     Route::get('{sala}/excluir', ['as' => 'salas.excluir', 'uses' => 'SalasController@excluir']);
 });
