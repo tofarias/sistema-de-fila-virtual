@@ -16,7 +16,7 @@ class SalasController extends Controller
 
         if( $request->isMethod('get') )
         {
-            $builder = new Sala;
+            $builder = Sala::with(['createdBy']);
 
             if ($request->has('codigo'))
             {

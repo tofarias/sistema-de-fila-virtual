@@ -14,6 +14,7 @@
                                 <th>Nome</th>
                                 <th>Localizacao</th>
                                 <th>Criado em</th>
+                                <th>Criado por</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,6 +25,7 @@
                                 <td>{{ $sala->nome }}</td>
                                 <td>{{ $sala->localizacao }}</td>
                                 <td>{{ $sala->created_at->format('d/m/Y H:i') }}</td>
+                                <td>{{ $sala->createdBy->name }}</td>
                             </tr>
                             @endforeach
                         </tbody>
