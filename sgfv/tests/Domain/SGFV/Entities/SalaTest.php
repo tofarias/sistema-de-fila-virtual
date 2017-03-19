@@ -77,4 +77,32 @@ class SalaTest extends TestCase
         $this->assertTrue( $errors->has('nome') );
         $this->assertEquals( 'O campo nome é de preenchimento obrigatório', $errors->first('nome') );
     }
+
+    public function testAoCadastrarSalaSeNaoInformarLocalizacaoEntaoDeveFalhar()
+    {
+        $request = [
+            'codigo' => 'ABC01',
+            'nome' => 'ABC',
+            'created_by' => 1
+        ];
+
+        //
+
+        $rules = [
+            'localizacao' => 'required'
+        ];
+
+        //
+
+        $messages = [
+            'localizacao.required' => 'O campo localização é de preenchimento obrigatório'
+        ];
+
+        $validator = \Validator::make($request,$rules, $messages);
+        $errors = $validator->errors();
+
+        $this->assertTrue( $validator->fails() );
+        $this->assertTrue( $errors->has('localizacao') );
+        $this->assertEquals( 'O campo localização é de preenchimento obrigatório', $errors->first('localizacao') );
+    }
 }
