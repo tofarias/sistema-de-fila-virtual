@@ -53,8 +53,8 @@ INSERT INTO `db_sgfv`.`users`
 `created_at`)
 VALUES
 (1,
-'tiago',
-'tiago@email.com',
+'usuario',
+'usuario@email.com',
 '$2y$10$nTVuvUiGUjI/G0vWXa6NrO6QN5ccIJuJw6aFo8rJTW3mYvzbKW8qe',
 'abcdefghij',
 now()
