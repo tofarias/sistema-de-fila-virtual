@@ -12,7 +12,7 @@
                                 <th>#</th>
                                 <th>Código</th>
                                 <th>Nome</th>
-                                <th>Localizacao</th>
+                                <th>Localização</th>
                                 <th>Criado em</th>
                                 <th>Criado por</th>
                                 <th>Ultima alteração em</th>
