@@ -8,6 +8,11 @@ class SalasController extends Controller
 {
     public function index()
     {
-        dd('index');
+        return redirect()->route('salas.consultar');
+    }
+
+    public function consultar()
+    {
+        dd('consultar');
     }
 }
