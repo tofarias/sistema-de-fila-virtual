@@ -36,7 +36,7 @@ class SalasController extends Controller
             $salas = $builder->orderBy('created_at','desc')->paginate(10);
         }
 
-        return view('salas.consulta', compact('salas'));
+        return view('salas.consultar', compact('salas'));
     }
 
     public function viewEditar(Request $request, Sala $sala)

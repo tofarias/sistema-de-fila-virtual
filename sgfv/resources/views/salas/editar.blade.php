@@ -8,7 +8,7 @@
         <div class="col-md-12">
             <div class="well">
                 {{ Form::model($sala, ['route' => ['salas.editar', $sala->sala_id]]) }}
-                    @include('salas.forms.editar')
+                    @include('salas.forms.cadastrar')
                 {{ Form::close() }}
             </div>
         </div>
