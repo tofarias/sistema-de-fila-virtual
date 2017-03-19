@@ -15,6 +15,8 @@
                                 <th>Localizacao</th>
                                 <th>Criado em</th>
                                 <th>Criado por</th>
+                                <th>Ultima alteração em</th>
+                                <th>Alterado por</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -27,6 +29,8 @@
                                 <td>{{ $sala->localizacao }}</td>
                                 <td>{{ $sala->created_at->format('d/m/Y H:i') }}</td>
                                 <td>{{ $sala->createdBy->name }}</td>
+                                <td>{{ $sala->updated_at->format('d/m/Y H:i') }}</td>
+                                <td>{{ $sala->updatedBy->name }}</td>
                                 <td>
                                     <div class="dropdown">
                                         <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
