@@ -43,7 +43,14 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        @if (Auth::check())
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Salas <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ route('salas.consultar') }}">Consultar</a></li>
+                            </ul>
+                        </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
