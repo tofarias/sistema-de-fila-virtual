@@ -162,4 +162,9 @@ class SalaTest extends TestCase
         $this->assertTrue( $errors->has('created_at') );
         $this->assertEquals( 'A data de criação da sala deve ser informada', $errors->first('created_at') );
     }
+
+    public function testUmaSalaDevePertencerAUmUsuario()
+    {
+        $this->assertTrue( method_exists( Sala::class, 'createdBy' ) );
+    }
 }
