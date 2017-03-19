@@ -38,4 +38,31 @@ class SalasController extends Controller
 
         return view('salas.consulta', compact('salas'));
     }
+
+    public function viewEditar(Request $request, Sala $sala)
+    {
+        return view('salas.editar', compact('sala'));
+    }
+
+    public function editar(Request $request, Sala $sala)
+    {
+        if( $request->has('codigo') )
+        {
+            $sala->codigo = $request->codigo;
+        }
+
+        if( $request->has('nome') )
+        {
+            $sala->nome = $request->nome;
+        }
+
+        if( $request->has('localizacao') )
+        {
+            $sala->localizacao = $request->localizacao;
+        }
+
+        $sala->saveOrFail();
+
+        return redirect()->route('salas.consultar',['codigo' => $request->codigo]);
+    }
 }
