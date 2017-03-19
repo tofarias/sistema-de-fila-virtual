@@ -21,4 +21,33 @@ class SalaTest extends TestCase
     {
         $this->assertTrue( $this->sala instanceof \Domain\SGFV\Entities\BaseModel );
     }
+
+    public function testAoCadastrarSalaSeNaoInformarCodigoEntaoDeveFalhar()
+    {
+        $request = [
+            'nome' => 'ABC',
+            'localizacao' => 'Setor ABC',
+            'created_by' => 1
+        ];
+
+        //
+
+        $rules = [
+            'codigo' => 'required'
+        ];
+
+        //
+
+        $messages = [
+            'codigo.required' => 'O campo código é de preenchimento obrigatório'
+        ];
+
+        $validator = \Validator::make($request,$rules, $messages);
+        $errors = $validator->errors();
+
+
+        $this->assertTrue( $validator->fails() );
+        $this->assertTrue( $errors->has('codigo') );
+        $this->assertEquals( 'O campo código é de preenchimento obrigatório', $errors->first('codigo') );
+    }
 }
