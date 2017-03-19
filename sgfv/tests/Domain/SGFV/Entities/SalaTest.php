@@ -133,4 +133,33 @@ class SalaTest extends TestCase
         $this->assertTrue( $errors->has('created_by') );
         $this->assertEquals( 'Um usuário deve ser definido', $errors->first('created_by') );
     }
+
+    public function testAoCadastrarSalaSeNaoInformarDataDeCriacaoDaSalaEntaoDeveFalhar()
+    {
+        $request = [
+            'codigo' => 'ABC01',
+            'nome' => 'ABC',
+            'localizacao' => 'predio ABC',
+            'created_by' => 1
+        ];
+
+        //
+
+        $validatorRules = [
+            'created_at' => 'required'
+        ];
+
+        //
+        
+        $validatorMessages = [
+            'created_at.required' => 'A data de criação da sala deve ser informada'
+        ];
+
+        $validator = \Validator::make($request,$validatorRules, $validatorMessages);
+        $errors = $validator->errors();
+
+        $this->assertTrue( $validator->fails() );
+        $this->assertTrue( $errors->has('created_at') );
+        $this->assertEquals( 'A data de criação da sala deve ser informada', $errors->first('created_at') );
+    }
 }
