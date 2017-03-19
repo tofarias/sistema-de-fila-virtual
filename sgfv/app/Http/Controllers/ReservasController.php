@@ -25,9 +25,6 @@ class ReservasController extends Controller
 
             if ($request->has('codigo_sala'))
             {
-                // $builder = $builder->with(['sala' => function( $query ) use ($request){
-                //     $query->whereRaw('lower(codigo) like ?', strtolower($request->codigo_sala) . '%');
-                // }]);
                 $builder = $builder->join('salas', 'salas.sala_id', '=', 'reserva_salas.sala_id')
                                     ->whereRaw('lower(salas.codigo) like ?', strtolower($request->codigo_sala) . '%');
             }
