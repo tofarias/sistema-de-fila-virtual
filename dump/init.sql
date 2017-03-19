@@ -45,6 +45,8 @@ CREATE TABLE `salas` (
 CREATE TABLE IF NOT EXISTS `db_sgfv`.`reserva_salas` (
   `reserva_id` INT NOT NULL AUTO_INCREMENT,
   `sala_id` INT(10) UNSIGNED NOT NULL,
+  `codigo` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `observacao` varchar(50) COLLATE utf8mb4_unicode_ci NULL,
   `dt_inicio` timestamp NOT NULL,
   `dt_fim` timestamp NOT NULL,
   `created_by` int(10) unsigned NOT NULL,
