@@ -22,3 +22,10 @@ Route::group(['prefix' => 'salas', 'middleware' => 'auth'], function () {
 
     Route::get('{sala}/excluir', ['as' => 'salas.excluir', 'uses' => 'SalasController@excluir']);
 });
+
+Route::group(['prefix' => 'reservas', 'middleware' => 'auth'], function () {
+
+    Route::get('/', ['as' => 'reservas.index', 'uses' => 'ReservasController@index']);
+    Route::get('consultar', ['as' => 'reservas.consultar', 'uses' => 'ReservasController@consultar']);
+
+});
