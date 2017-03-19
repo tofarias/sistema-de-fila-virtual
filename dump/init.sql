@@ -35,3 +35,21 @@ CREATE TABLE `salas` (
   CONSTRAINT `salas_updated_by_foreign` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`),
   CONSTRAINT `salas_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+#INSERTS
+
+INSERT INTO `db_sgfv`.`users`
+(
+`name`,
+`email`,
+`password`,
+`remember_token`,
+`created_at`)
+VALUES
+(
+'tiago',
+'tiago@email.com',
+'$2y$10$nTVuvUiGUjI/G0vWXa6NrO6QN5ccIJuJw6aFo8rJTW3mYvzbKW8qe',
+'abcdefghij',
+now()
+);
