@@ -28,4 +28,8 @@ Route::group(['prefix' => 'reservas', 'middleware' => 'auth'], function () {
     Route::get('/', ['as' => 'reservas.index', 'uses' => 'ReservasController@index']);
     Route::get('consultar', ['as' => 'reservas.consultar', 'uses' => 'ReservasController@consultar']);
 
+    Route::get('{reserva}/editar', ['as' => 'reservas.viewEditar', 'uses' => 'ReservasController@viewEditar']);
+    Route::post('{reserva}/editar', ['as' => 'reservas.editar', 'uses' => 'ReservasController@editar']);
+
+    Route::get('{reserva}/excluir', ['as' => 'reservas.excluir', 'uses' => 'ReservaController@excluir']);
 });
