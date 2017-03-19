@@ -26,9 +26,9 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `salas` (
   `sala_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codigo` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nome` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `localizacao` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `localizacao` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_by` int(10) unsigned NOT NULL,
   `updated_by` int(10) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -53,8 +53,24 @@ INSERT INTO `db_sgfv`.`users`
 `created_at`)
 VALUES
 (1,
-'usuario',
-'usuario@email.com',
+'UsuarioA',
+'ua@email.com',
+'$2y$10$nTVuvUiGUjI/G0vWXa6NrO6QN5ccIJuJw6aFo8rJTW3mYvzbKW8qe',
+'abcdefghij',
+now()
+);
+
+INSERT INTO `db_sgfv`.`users`
+(`id`,
+`name`,
+`email`,
+`password`,
+`remember_token`,
+`created_at`)
+VALUES
+(2,
+'UsuarioB',
+'ub@email.com',
 '$2y$10$nTVuvUiGUjI/G0vWXa6NrO6QN5ccIJuJw6aFo8rJTW3mYvzbKW8qe',
 'abcdefghij',
 now()
@@ -74,5 +90,22 @@ VALUES
 'sala de reuniões 01',
 'predio A',
 1,
+now()
+);
+
+INSERT INTO `db_sgfv`.`salas`
+(`sala_id`,
+`codigo`,
+`nome`,
+`localizacao`,
+`created_by`,
+`created_at`
+)
+VALUES
+(2,
+'CBA02',
+'sala de reuniões 02',
+'predio B',
+2,
 now()
 );
