@@ -1,3 +1,9 @@
+#SET FOREIGN_KEY_CHECKS=0;
+
+drop database if EXISTS db_sgfv;
+create database db_sgfv;
+use db_sgfv;
+
 CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -39,17 +45,34 @@ CREATE TABLE `salas` (
 #INSERTS
 
 INSERT INTO `db_sgfv`.`users`
-(
+(`id`,
 `name`,
 `email`,
 `password`,
 `remember_token`,
 `created_at`)
 VALUES
-(
+(1,
 'tiago',
 'tiago@email.com',
 '$2y$10$nTVuvUiGUjI/G0vWXa6NrO6QN5ccIJuJw6aFo8rJTW3mYvzbKW8qe',
 'abcdefghij',
+now()
+);
+
+INSERT INTO `db_sgfv`.`salas`
+(`sala_id`,
+`codigo`,
+`nome`,
+`localizacao`,
+`created_by`,
+`created_at`
+)
+VALUES
+(1,
+'ABC01',
+'sala de reuniões 01',
+'predio A',
+1,
 now()
 );
