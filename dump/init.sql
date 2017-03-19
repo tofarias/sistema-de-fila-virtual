@@ -42,6 +42,36 @@ CREATE TABLE `salas` (
   CONSTRAINT `salas_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS `db_sgfv`.`reserva_salas` (
+  `reserva_id` INT NOT NULL AUTO_INCREMENT,
+  `sala_id` INT(10) UNSIGNED NOT NULL,
+  `dt_inicio` timestamp NOT NULL,
+  `dt_fim` timestamp NOT NULL,
+  `created_by` int(10) unsigned NOT NULL,
+  `created_at` timestamp NOT NULL,
+  `updated_by` int(10) unsigned NOT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`reserva_id`),
+  INDEX `fk_reserva_salas_salas1_idx` (`sala_id` ASC),
+  INDEX `fk_reserva_salas_users1_idx` (`created_by` ASC),
+  INDEX `fk_reserva_salas_users2_idx` (`updated_by` ASC),
+  CONSTRAINT `fk_reserva_salas_salas1`
+    FOREIGN KEY (`sala_id`)
+    REFERENCES `db_sgfv`.`salas` (`sala_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_reserva_salas_users1`
+    FOREIGN KEY (`created_by`)
+    REFERENCES `db_sgfv`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_reserva_salas_users2`
+    FOREIGN KEY (`updated_by`)
+    REFERENCES `db_sgfv`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 #INSERTS
 
 INSERT INTO `db_sgfv`.`users`
