@@ -32,4 +32,7 @@ Route::group(['prefix' => 'reservas', 'middleware' => 'auth'], function () {
     Route::post('{reserva}/editar', ['as' => 'reservas.editar', 'uses' => 'ReservasController@editar']);
 
     Route::get('{reserva}/excluir', ['as' => 'reservas.excluir', 'uses' => 'ReservasController@excluir']);
+
+    Route::get('cadastrar', ['as' => 'reservas.viewCadastrar', 'uses' => 'ReservasController@viewCadastrar']);
+    Route::post('cadastrar', ['as' => 'reservas.cadastrar', 'uses' => 'ReservasController@cadastrar']);
 });
