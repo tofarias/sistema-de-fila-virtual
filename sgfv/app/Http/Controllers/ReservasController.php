@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Domain\SGFV\Entities\{ReservaSala as Reserva, User};
+use Domain\SGFV\Entities\{ReservaSala as Reserva, User, Sala};
 
 class ReservasController extends Controller
 {
@@ -43,5 +43,12 @@ class ReservasController extends Controller
         $usuarios = User::orderBy('name')->pluck('name', 'id')->toArray();
 
         return view('reservas.consultar', compact('reservas', 'usuarios'));
+    }
+
+    public function viewCadastrar()
+    {
+        $salas = Sala::orderBy('nome')->pluck('nome', 'sala_id')->toArray();
+
+        return view('reservas.cadastrar', compact('salas'));
     }
 }
