@@ -13,6 +13,6 @@ class SalasController extends Controller
 
     public function consultar()
     {
-        dd('consultar');
+        return view('salas.consulta');
     }
 }
