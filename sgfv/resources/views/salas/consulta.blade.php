@@ -4,10 +4,18 @@
 
 <div class="container">
 
-<div class="well">
-    {{ Form::open(['route' => 'salas.consultar', 'method' => 'GET', 'class' => ""]) }}
-        @include('salas.forms.consultar')
-    {{ Form::close() }}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well">
+                {{ Form::open(['route' => 'salas.consultar', 'method' => 'GET', 'class' => ""]) }}
+                    @include('salas.forms.consultar')
+                {{ Form::close() }}
+            </div>
+        </div>
+    </div>
+
+    @include('salas.lists.salas')
+
 </div>
 
 @endsection
