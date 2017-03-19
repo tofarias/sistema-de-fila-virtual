@@ -1,4 +1,4 @@
-@if( $salas )
+@if( count($salas) > 0 )
 
 <div class="row">
     <div class="col-md-12">
@@ -29,8 +29,8 @@
                                 <td>{{ $sala->localizacao }}</td>
                                 <td>{{ $sala->created_at->format('d/m/Y H:i') }}</td>
                                 <td>{{ $sala->createdBy->name }}</td>
-                                <td>{{ $sala->updated_at->format('d/m/Y H:i') }}</td>
-                                <td>{{ $sala->updatedBy->name }}</td>
+                                <td>{{ isset($sala->updated_at) ? $sala->updated_at->format('d/m/Y H:i') : '-' }}</td>
+                                <td>{{ isset($sala->updatedBy) ? $sala->updatedBy->name : '-' }}</td>
                                 <td>
                                     <div class="dropdown">
                                         <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -39,6 +39,8 @@
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                             <li><a href="{{ route('salas.viewEditar', [$sala->sala_id]) }}">Editar</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="{{ route('salas.excluir', [$sala->sala_id]) }}">Excluir</a></li>
                                         </ul>
                                     </div>
                                 </td>
