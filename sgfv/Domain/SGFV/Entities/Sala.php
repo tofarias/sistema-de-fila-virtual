@@ -2,5 +2,5 @@
 
 class Sala extends BaseModel
 {
-    
+    protected $primaryKey =  'sala_id';
 }
