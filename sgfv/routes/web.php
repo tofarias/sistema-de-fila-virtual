@@ -31,5 +31,5 @@ Route::group(['prefix' => 'reservas', 'middleware' => 'auth'], function () {
     Route::get('{reserva}/editar', ['as' => 'reservas.viewEditar', 'uses' => 'ReservasController@viewEditar']);
     Route::post('{reserva}/editar', ['as' => 'reservas.editar', 'uses' => 'ReservasController@editar']);
 
-    Route::get('{reserva}/excluir', ['as' => 'reservas.excluir', 'uses' => 'ReservaController@excluir']);
+    Route::get('{reserva}/excluir', ['as' => 'reservas.excluir', 'uses' => 'ReservasController@excluir']);
 });
