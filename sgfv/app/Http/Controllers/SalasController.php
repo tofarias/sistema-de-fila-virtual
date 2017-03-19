@@ -65,4 +65,11 @@ class SalasController extends Controller
 
         return redirect()->route('salas.consultar',['codigo' => $request->codigo]);
     }
+
+    public function excluir(Sala $sala)
+    {
+        $sala->delete();
+
+        return redirect()->route('salas.consultar');
+    }
 }
