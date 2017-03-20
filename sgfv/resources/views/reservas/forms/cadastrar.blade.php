@@ -14,7 +14,7 @@
     <div class="col-md-2">
         <div class="form-group">
             {{ Form::label('Hora de Inicio')}}
-            {{ Form::time('hr_inicio', date('H:i:s'), ['class' => 'form-control']) }}
+            {{ Form::time('hr_inicio', date('H:i'), ['class' => 'form-control']) }}
         </div>
     </div>
 </div>
@@ -30,7 +30,7 @@
     <div class="col-md-12">
         <div class="form-group">
             {{ Form::label('Observação')}}<br>
-            {{ Form::textarea('observacao', null, ['cols'=> '100', 'rows' => '5']) }}
+            {{ Form::textarea('observacao', null, ['cols'=> '100', 'rows' => '5', 'maxlength' => 50]) }}
         </div>
     </div>
 </div>

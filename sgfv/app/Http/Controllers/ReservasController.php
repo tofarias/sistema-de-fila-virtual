@@ -51,4 +51,49 @@ class ReservasController extends Controller
 
         return view('reservas.cadastrar', compact('salas'));
     }
+
+    public function cadastrar(Request $request)
+    {
+        $reserva = new Reserva;
+
+        if( $request->has('codigo') )
+        {
+            $reserva->codigo = $request->codigo;
+        }
+
+        if( $request->has('dt_inicio') )
+        {
+            if( $request->has('hr_inicio') )
+            {   
+                $d = new \DateTime( $request->dt_inicio.$request->hr_inicio );
+                $reserva->dt_inicio = $d->format('Y-m-d H:i:s');
+
+                $d->add(new \DateInterval('PT1H'));
+                $reserva->dt_fim = $d->format('Y-m-d H:i:s');
+            }
+        }
+
+        if( $request->has('sala_id') )
+        {
+            $reserva->sala_id = $request->sala_id;
+        }
+
+        if( $request->has('observacao') )
+        {
+            $reserva->observacao = $request->observacao;
+        }
+
+        //
+
+        try
+        {
+            $reserva->save();
+
+            return redirect()->route('reservas.consultar',['codigo' => $request->codigo]);    
+        }
+        catch( \DomainException $e )
+        {
+            return redirect()->route('reservas.consultar')->with('fail', $e->getMessage());
+        }
+    }    
 }
